@@ -10,6 +10,7 @@ var users = getUsers();
 }
 
 export default function Home({users}) {
+  console.log(users)
   return (
     <div className={styles.container}>
       <Head>
@@ -23,7 +24,7 @@ export default function Home({users}) {
           Please Enter Your Email:
         </h1>
         <input className={styles.input}></input>
-        <p>{users.username}</p>
+       
       </main>
     </div>
   )
