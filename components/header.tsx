@@ -14,7 +14,7 @@ export default function Header() {
   const [Loaded, isLoaded] = useState(false)
   useEffect(() => {
     const fetchData = async () => {
-      const res1 = await fetch("/api/db/ItemsLeft")
+      const res1 = await fetch("/api/db/ItemsLeftCount")
       const json1 = await res1.json()
       if (json1.done) {
         //isLoaded(true)
@@ -22,7 +22,7 @@ export default function Header() {
         setItemsLeft(JSON.parse(json1.result))
       }
 
-      const res2 = await fetch("/api/db/ItemsDone")
+      const res2 = await fetch("/api/db/ItemsDoneCount")
       const json2 = await res2.json()
       if (json2.done) {
         isLoaded(true)
@@ -94,19 +94,7 @@ export default function Header() {
             <Link href="/">Home</Link>
           </li>
           <li className={styles.navItem}>
-            <Link href="/client">Client</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/server">Server</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/protected">Protected</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/api-example">API</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/admin">Admin</Link>
+            <Link href="/itemsDone">Items Done</Link>
           </li>
           <li className={styles.navItem}>
             <Link href="/me">Me</Link>
@@ -117,7 +105,11 @@ export default function Header() {
         <h3>Items Done: {itemsDone[0].NumberOfItems}</h3>
         <h3>Items left: {itemsLeft[0].NumberOfItems}</h3>
       </div>
-        : ""}
+        : session? <div className={styles.itemCount}>
+        <h3>Items Done: Loading...</h3>
+        <h3>Items left: Loading...</h3>
+      </div>: <div className={styles.itemCount} />
+      }
       </div>
     </header>
   )

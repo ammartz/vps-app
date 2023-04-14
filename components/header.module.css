@@ -81,7 +81,7 @@
 }
 
 .navItems {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding: 0;
   list-style: none;
 }
@@ -94,4 +94,9 @@
 .itemCount {
   display: flex;
   justify-content: space-around;
+  height: 32px;
+}
+
+.itemCount h3 {
+  margin: 0;
 }
