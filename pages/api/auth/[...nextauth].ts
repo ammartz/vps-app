@@ -4,6 +4,7 @@ import FacebookProvider from "next-auth/providers/facebook"
 import GithubProvider from "next-auth/providers/github"
 import TwitterProvider from "next-auth/providers/twitter"
 import Auth0Provider from "next-auth/providers/auth0"
+import { registerUserToDB } from "../../lib/db"
 // import AppleProvider from "next-auth/providers/apple"
 // import EmailProvider from "next-auth/providers/email"
 
@@ -63,26 +64,18 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token }) {
       token.userRole = "admin"
-      const data = {
-        email: token.email,
-      }
-  
-      const JSONdata = JSON.stringify(data)
-      const endpoint = '../db/registerUser'
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSONdata,
-      }
-  
-      const response = await fetch(endpoint, options)
+      
+      
+      registerUserToDB(token.email, (result)=>{
 
-      const result = await response.json()
-      if(result.done){
-      return token
-      }
+        if(result){
+          return token
+          }
+      })
+      
+      
+        return token
+        
     },
   },
 }
