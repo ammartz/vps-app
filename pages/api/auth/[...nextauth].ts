@@ -68,7 +68,7 @@ export const authOptions: NextAuthOptions = {
       }
   
       const JSONdata = JSON.stringify(data)
-      const endpoint = '/api/db/registerUser'
+      const endpoint = '../db/registerUser'
       const options = {
         method: 'POST',
         headers: {
