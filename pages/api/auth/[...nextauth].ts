@@ -63,7 +63,26 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token }) {
       token.userRole = "admin"
+      const data = {
+        email: token.email,
+      }
+  
+      const JSONdata = JSON.stringify(data)
+      const endpoint = '/api/db/registerUser'
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSONdata,
+      }
+  
+      const response = await fetch(endpoint, options)
+
+      const result = await response.json()
+      if(result.done){
       return token
+      }
     },
   },
 }

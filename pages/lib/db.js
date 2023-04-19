@@ -6,7 +6,7 @@ const mysql = require('mysql2');
 // Create the connection pool. The pool-specific settings are the defaults
 const pool = mysql.createPool({
   host: 'localhost',
-  user: 'mysql',
+  user: 'siri_admin',
   password: 'aA@816953719',
   database: 'siri_siriussDB',
   waitForConnections: true,
@@ -98,3 +98,17 @@ export async function getUnverifyedItem(user_email, callb){
             }
             );
         }
+
+
+        export async function registerUserToDB(user_email, callb){
+            pool.execute(
+                'INSERT INTO user (email) VALUES (?)',[user_email],
+                function(err, results, fields) {
+                    if(err){
+                        console.log(err) 
+                        return
+                    }
+                    return callb(JSON.stringify(results))      
+                }
+                );
+            }
