@@ -109,7 +109,7 @@ export async function getUnverifyedItem(user_email, callb){
                         return
                     }
                     console.log("----------------")
-                    console.log(results.email)
+                    console.log(results[0].email)
                     console.log("----------------")
                     if(results.email !== user_email){
 
