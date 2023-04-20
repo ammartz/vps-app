@@ -108,10 +108,8 @@ export async function getUnverifyedItem(user_email, callb){
                         console.log(err) 
                         return
                     }
-                    console.log("----------------")
-                    console.log(results[0].email)
-                    console.log("----------------")
-                    if(results.email !== user_email){
+                    
+                    if(results[0].email !== user_email){
 
                         pool.execute(
                             'INSERT INTO user (id, email) VALUES (?, ?)',[user_email, user_email],
