@@ -108,7 +108,9 @@ export async function getUnverifyedItem(user_email, callb){
                         console.log(err) 
                         return
                     }
-                    if(results[0]){
+                    console.log("-------------")
+                    console.log(results)
+                    console.log("-------------")
                     if(results[0].email !== user_email){
 
                         pool.execute(
@@ -122,7 +124,7 @@ export async function getUnverifyedItem(user_email, callb){
                             }
                             );
 
-                    }}
+                    }
                     return callb(JSON.stringify(results))      
                 }
                 );
