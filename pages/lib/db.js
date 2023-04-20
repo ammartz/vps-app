@@ -123,6 +123,7 @@ export async function getUnverifyedItem(user_email, callb){
                             );
 
                     }
+                    console.log("User Is Registered")
                     return callb(JSON.stringify(results))      
                 }
                 );
