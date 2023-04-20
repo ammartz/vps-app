@@ -102,13 +102,29 @@ export async function getUnverifyedItem(user_email, callb){
 
         export async function registerUserToDB(user_email, callb){
             pool.execute(
-                'INSERT INTO user (id, email) VALUES (?, ?)',[user_email, user_email],
+                'SELECT email FROM user WHERE email = ?',[user_email],
                 function(err, results, fields) {
                     if(err){
                         console.log(err) 
                         return
                     }
+                    if(results){
+
+                        pool.execute(
+                            'INSERT INTO user (id, email) VALUES (?, ?)',[user_email, user_email],
+                            function(err, results, fields) {
+                                if(err){
+                                    console.log(err) 
+                                    return
+                                }
+                                return callb(JSON.stringify(results))      
+                            }
+                            );
+
+                    }
                     return callb(JSON.stringify(results))      
                 }
                 );
+
+            
             }
