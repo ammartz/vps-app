@@ -25,8 +25,25 @@ export default function IndexPage() {
 
       }
 
-      const res2 = await fetch("/api/db/supplier")
-      const json2 = await res2.json()
+
+
+      const data = {
+        email: session.user.email,
+      }
+  
+      const JSONdata = JSON.stringify(data)
+      const endpoint = '/api/db/supplier'
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSONdata,
+      }
+  
+      const response = await fetch(endpoint, options)
+      const json2 = await response.json()
+      
       if (json2.done) {
         
         //setContent(JSON.stringify(JSON.parse(json.result)))

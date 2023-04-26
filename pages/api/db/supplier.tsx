@@ -26,7 +26,7 @@ export default async function handler(
   }
   
     
-    await getSupplier(session.user.email, function(result){
+    await getSupplier(req.body.email, function(result){
        res.status(200).send({
         done: true,
         result})
