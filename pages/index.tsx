@@ -27,11 +27,11 @@ export default function IndexPage() {
     }
 
     const fetchSupplier = async () => {
-      isLoaded(false)
+      
       const res = await fetch("/api/db/supplier")
       const json = await res.json()
       if (json.done) {
-        isLoaded(true)
+        
         //setContent(JSON.stringify(JSON.parse(json.result)))
         setSupplier(JSON.parse(json.result))
         console.log(supplier)
