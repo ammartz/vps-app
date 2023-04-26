@@ -1,7 +1,7 @@
 // This is an example of to protect an API route
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
-import {getSuppliers} from "../../lib/db"
+import {getSupplier} from "../../lib/db"
 export const config = {
   api: {
     externalResolver: true,
@@ -26,7 +26,7 @@ export default async function handler(
   }
   
     
-    await getSuppliers(function(result){
+    await getSupplier(function(result){
        res.status(200).send({
         done: true,
         result})

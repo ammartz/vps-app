@@ -16,9 +16,9 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-export async function getSuppliers(callb){
+export async function getSupplier(user_email, callb){
 pool.execute(
-    'SELECT * FROM supplier ',[],
+    'SELECT supplierID FROM user WHERE email = ? ',[user_email],
     function(err, results, fields) {
         if(err){
             console.log(err) 

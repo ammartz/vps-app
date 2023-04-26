@@ -8,13 +8,14 @@ export default function IndexPage() {
   const { data: session, status } = useSession()
   const [inputURL, setInputURL] = useState("")
   const [notFound, isNotFound] = useState(false)
-  const [supplier, setSupplier] = useState('SA-1000-1')
+  const [supplier, setSupplier] = useState("")
 
   const [content, setContent] = useState([])
   const [Loaded, isLoaded] = useState(false)
   const [LoadingSubmit, isLoadingSubmit] = useState(false)
   useEffect(() => {
     const fetchData = async () => {
+      isLoaded(false)
       const res = await fetch("/api/db/ItemToVerify")
       const json = await res.json()
       if (json.done) {
@@ -24,7 +25,21 @@ export default function IndexPage() {
 
       }
     }
+
+    const fetchSupplier = async () => {
+      isLoaded(false)
+      const res = await fetch("/api/db/supplier")
+      const json = await res.json()
+      if (json.done) {
+        isLoaded(true)
+        //setContent(JSON.stringify(JSON.parse(json.result)))
+        setSupplier(JSON.parse(json.result))
+        console.log(supplier)
+      }
+    }
+
     fetchData()
+    fetchSupplier()
   }, [Loaded])
 
 
