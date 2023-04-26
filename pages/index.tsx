@@ -104,6 +104,7 @@ export default function IndexPage() {
       <div>
         {Loaded ?
           <div className={styles.itemCard}>
+            <h1>{supplier}</h1>
             <h1>{content[0].name_en}</h1>
             <h1>{content[0].name_ar}</h1>
             <div className={styles.center}>
