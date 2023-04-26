@@ -19,10 +19,22 @@ export default function IndexPage() {
       const res = await fetch("/api/db/ItemToVerify")
       const json = await res.json()
       if (json.done) {
-        isLoaded(true)
+        
         //setContent(JSON.stringify(JSON.parse(json.result)))
         setContent(JSON.parse(json.result))
 
+      }
+
+      const res2 = await fetch("/api/db/supplier")
+      const json2 = await res2.json()
+      if (json2.done) {
+        
+        //setContent(JSON.stringify(JSON.parse(json.result)))
+        setContent(JSON.parse(json2.result))
+
+      }
+      if(json.done && json2.done){
+        isLoaded(true)
       }
     }
 
