@@ -26,7 +26,7 @@ export default function IndexPage() {
       }
 
 
-
+      if(session){
       const data = {
         email: session.user.email,
       }
@@ -43,24 +43,29 @@ export default function IndexPage() {
   
       const response = await fetch(endpoint, options)
       const json2 = await response.json()
-      
+
       if (json2.done) {
         
         //setContent(JSON.stringify(JSON.parse(json.result)))
         setSupplier(JSON.parse(json2.result))
 
       }
+
+    
       if(json.done && json2.done){
         isLoaded(true)
         console.log(supplier)
       }
+
+    }
+
     }
 
   
 
     fetchData()
   
-  }, [Loaded])
+  }, [Loaded, session])
 
 
   const handleSubmit = async (event) => {
