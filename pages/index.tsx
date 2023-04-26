@@ -8,7 +8,7 @@ export default function IndexPage() {
   const { data: session, status } = useSession()
   const [inputURL, setInputURL] = useState("")
   const [notFound, isNotFound] = useState(false)
-  const [supplier, setSupplier] = useState("")
+  const [supplier, setSupplier] = useState({supplierID:""})
 
   const [content, setContent] = useState([])
   const [Loaded, isLoaded] = useState(false)
@@ -104,7 +104,7 @@ export default function IndexPage() {
       <div>
         {Loaded ?
           <div className={styles.itemCard}>
-            <h1>{supplier}</h1>
+            <h1>{supplier.supplierID}</h1>
             <h1>{content[0].name_en}</h1>
             <h1>{content[0].name_ar}</h1>
             <div className={styles.center}>
@@ -119,15 +119,7 @@ export default function IndexPage() {
             </div>
             <form onSubmit={handleSubmit}>
               <div className={styles.center + " " + styles.col}>
-                <select value={supplier}
-                  onChange={(e) => {
-                    setSupplier(e.target.value);
-                  }}>
-                  <option value="SA-1000-1">Lulu Hypermarket</option>
-                  <option value="SA-1100-1">Tamimi Hypermarket</option>
-                  <option value="SA-1200-1">Danube</option>
-                  <option value="SA-1300-1">Carrefour</option>
-                </select>
+                
               </div>
               <div className={styles.center + " " + styles.col}>
                 <label htmlFor="inputURL">Product URL:</label>
