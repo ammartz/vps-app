@@ -25,7 +25,7 @@ export default async function handler(
   }
   var data = req.body
   
-   if(session.user.email === data.email){
+   if(session.user.email !== data.email){
     await registerUserToDB(data.email ,function(result){
       return res.status(200).send({
        done: true})
