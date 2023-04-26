@@ -68,9 +68,7 @@ export const authOptions: NextAuthOptions = {
       
       registerUserToDB(token.email, (result)=>{
 
-        if(result){
-          return token
-          }
+        
       })
       
       
