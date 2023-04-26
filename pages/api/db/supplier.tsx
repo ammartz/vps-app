@@ -25,7 +25,7 @@ export default async function handler(
       result: {mesage: "Login"}})
   }
   
-    
+  console.log(req.body.email)  
     await getSupplier(req.body.email, function(result){
        res.status(200).send({
         done: true,
