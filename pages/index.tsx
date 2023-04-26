@@ -77,7 +77,7 @@ export default function IndexPage() {
       itemURL: event.target.inputURL.value,
       itemFound: !notFound,
       itemID: content[0].itemID,
-      supID: supplier
+      supID: supplier[0].supplierID
     }
 
     const JSONdata = JSON.stringify(data)
@@ -104,7 +104,7 @@ export default function IndexPage() {
       <div>
         {Loaded ?
           <div className={styles.itemCard}>
-            <h1>{supplier[0].supplierID}</h1>
+            
             <h1>{content[0].name_en}</h1>
             <h1>{content[0].name_ar}</h1>
             <div className={styles.center}>
