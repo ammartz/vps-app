@@ -26,20 +26,10 @@ export default function IndexPage() {
       }
     }
 
-    const fetchSupplier = async () => {
-      
-      const res = await fetch("/api/db/supplier")
-      const json = await res.json()
-      if (json.done) {
-        
-        //setContent(JSON.stringify(JSON.parse(json.result)))
-        setSupplier(JSON.parse(json.result))
-        console.log(supplier)
-      }
-    }
+  
 
     fetchData()
-    fetchSupplier()
+  
   }, [Loaded])
 
 
