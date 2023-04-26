@@ -30,11 +30,12 @@ export default function IndexPage() {
       if (json2.done) {
         
         //setContent(JSON.stringify(JSON.parse(json.result)))
-        setContent(JSON.parse(json2.result))
+        setSupplier(JSON.parse(json2.result))
 
       }
       if(json.done && json2.done){
         isLoaded(true)
+        console.log(supplier)
       }
     }
 
