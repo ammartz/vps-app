@@ -15,7 +15,7 @@ export default function IndexPage() {
   const [LoadingSubmit, isLoadingSubmit] = useState(false)
   useEffect(() => {
     const fetchData = async () => {
-      isLoaded(false)
+
       const res = await fetch("/api/db/ItemToVerify")
       const json = await res.json()
       if (json.done) {
