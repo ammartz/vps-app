@@ -65,13 +65,6 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token }) {
       token.userRole = "admin"
       
-      
-      registerUserToDB(token.email, (result)=>{
-
-        
-      })
-      
-      
         return token
         
     },
