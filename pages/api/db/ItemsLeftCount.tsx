@@ -1,7 +1,7 @@
 // This is an example of to protect an API route
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
-import {getItemsLeft} from "../../lib/db"
+import {getItemsLeft} from "../../../lib/db"
 export const config = {
   api: {
     externalResolver: true,
